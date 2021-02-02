@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Create new Order">
+        <lightning-record-edit-form object-api-name="Order__c" onsubmit={handleOnSubmit}>
+            <lightning-input-field field-name="TotalPrice__c"></lightning-input-field>
+            <lightning-input-field field-name="PaymentType__c"></lightning-input-field>
+            <lightning-input-field field-name="PaymentPeriod__c"></lightning-input-field>
+
+            <c-custom-account-lookup
+                    s-object-name="Order__c"
+                    field-label="Client"
+                    field-name="Client__c"
+                    onselected={handleOnSelected}
+                    required>
+            </c-custom-account-lookup>
+
+            <br>
+            <lightning-button onclick={validateCustomLookup} type="submit" variant="brand" label="Create"></lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>
