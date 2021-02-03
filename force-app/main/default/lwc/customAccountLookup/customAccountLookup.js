@@ -3,7 +3,6 @@ import {LightningElement, api} from 'lwc';
 export default class CustomAccountLookup extends LightningElement {
     @api sObjectName;
     @api fieldName;
-    @api fieldLabel;
     @api value;
     @api required = false;
 

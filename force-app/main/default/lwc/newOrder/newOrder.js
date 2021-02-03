@@ -1,13 +1,21 @@
 import {LightningElement, track} from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import ORDER_OBJECT from '@salesforce/schema/Order__c';
+import TOTAL_PRICE_FIELD from '@salesforce/schema/Order__c.TotalPrice__c';
+import PAYMENT_TYPE_FIELD from '@salesforce/schema/Order__c.PaymentType__c';
+import PAYMENT_PERIOD_FIELD from '@salesforce/schema/Order__c.PaymentPeriod__c';
+import CLIENT_ID_FIELD from '@salesforce/schema/Order__c.Client__c';
 
 export default class NewOrder extends LightningElement {
-    @track totalPrice;
-    @track paymentType;
-    @track paymentPeriod;
+    orderObjectName = ORDER_OBJECT;
+    totalPriceFieldName= TOTAL_PRICE_FIELD;
+    paymentTypeFieldName = PAYMENT_TYPE_FIELD;
+    paymentPeriodFieldName= PAYMENT_PERIOD_FIELD;
+    clientIdFieldName= CLIENT_ID_FIELD;
+
     @track clientId;
 
-    handleOnSelected(event) {
+    handleOnClientSelected(event) {
         this.clientId = event.detail[0];
     }
 

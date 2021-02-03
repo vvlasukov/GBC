@@ -1,20 +1,25 @@
 <template>
-    <lightning-card title="Create new Order">
-        <lightning-record-edit-form object-api-name="Order__c" onsubmit={handleOnSubmit}>
-            <lightning-input-field field-name="TotalPrice__c"></lightning-input-field>
-            <lightning-input-field field-name="PaymentType__c"></lightning-input-field>
-            <lightning-input-field field-name="PaymentPeriod__c"></lightning-input-field>
+    <article class="slds-card">
+        <div class="slds-card__header">
+            <h2 class="slds-card__header-title">Create new order</h2>
+        </div>
+        <lightning-record-edit-form object-api-name={orderObjectName} onsubmit={handleOnSubmit}>
+            <div class=" slds-card__body_inner">
 
-            <c-custom-account-lookup
-                    s-object-name="Order__c"
-                    field-label="Client"
-                    field-name="Client__c"
-                    onselected={handleOnSelected}
-                    required>
-            </c-custom-account-lookup>
+                <lightning-input-field field-name={totalPriceFieldName}></lightning-input-field>
+                <lightning-input-field field-name={paymentTypeFieldName}></lightning-input-field>
+                <lightning-input-field field-name={paymentPeriodFieldName}></lightning-input-field>
 
-            <br>
-            <lightning-button onclick={validateCustomLookup} type="submit" variant="brand" label="Create"></lightning-button>
+                <c-custom-account-lookup
+                        s-object-name={orderObjectName}
+                        field-name={clientIdFieldName}
+                        onselected={handleOnClientSelected}
+                        required>
+                </c-custom-account-lookup>
+            </div>
+            <footer class="slds-card__footer slds-clearfix">
+                <lightning-button class="slds-float_left" onclick={validateCustomLookup} type="submit" variant="brand" label="Create"></lightning-button>
+            </footer>
         </lightning-record-edit-form>
-    </lightning-card>
+    </article>
 </template>
